@@ -61,7 +61,7 @@
 // @section info
 
 // Author info of this build printed to the host during boot and M115
-#define STRING_CONFIG_H_AUTHOR "(none, default config)" // Original author or contributor.
+#define STRING_CONFIG_H_AUTHOR "Eddie Spaghetti" // Original author or contributor.
 //#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
 
 // @section machine
@@ -702,13 +702,19 @@
   #if ENABLED(PID_PARAMS_PER_HOTEND)
     // Specify up to one value per hotend here, according to your setup.
     // If there are fewer values, the last one applies to the remaining hotends.
-    #define DEFAULT_Kp_LIST {  22.20,  22.20 }
-    #define DEFAULT_Ki_LIST {   1.08,   1.08 }
-    #define DEFAULT_Kd_LIST { 114.00, 114.00 }
+    //#define DEFAULT_Kp_LIST {  22.20,  22.20 }
+    //#define DEFAULT_Ki_LIST {   1.08,   1.08 }
+    //#define DEFAULT_Kd_LIST { 114.00, 114.00 }
   #else
+<<<<<<< Updated upstream
     #define DEFAULT_Kp  22.20
     #define DEFAULT_Ki   1.08
     #define DEFAULT_Kd 114.00
+=======
+    #define DEFAULT_Kp  22.30
+    #define DEFAULT_Ki   1.95
+    #define DEFAULT_Kd  63.8
+>>>>>>> Stashed changes
   #endif
 #else
   #define BANG_MAX 255    // Limit hotend current while in bang-bang mode; 255=full current
@@ -799,9 +805,15 @@
 
   // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
+<<<<<<< Updated upstream
   #define DEFAULT_bedKp 10.00
   #define DEFAULT_bedKi .023
   #define DEFAULT_bedKd 305.4
+=======
+  #define DEFAULT_bedKp 159.6  //eds
+  #define DEFAULT_bedKi 026.6 //eds
+  #define DEFAULT_bedKd 638.5 //eds
+>>>>>>> Stashed changes
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #else
@@ -1810,9 +1822,9 @@
 // @section motion
 
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
-#define INVERT_X_DIR false
-#define INVERT_Y_DIR true
-#define INVERT_Z_DIR false
+#define INVERT_X_DIR true //eds
+#define INVERT_Y_DIR true //eds
+#define INVERT_Z_DIR false //eds
 //#define INVERT_I_DIR false
 //#define INVERT_J_DIR false
 //#define INVERT_K_DIR false
@@ -2118,6 +2130,12 @@
  * Commands to execute at the end of G29 probing.
  * Useful to retract or move the Z probe out of the way.
  */
+<<<<<<< Updated upstream
+=======
+#define EVENT_GCODE_AFTER_G29 "G1 X0.1 Y0.1 Z50 F5000.0\nM106 S0 \nM104 S0 \nM140 S0\nM300 S1046 P150 \nM300 S1318 P150 \nM300 S1567 P150 \nM300 S2093 P150 \nM300 S2637 P150 "  //eDs END
+//#define Z_PROBE_END_SCRIPT "G1 X0.1 Y0.1 Z50 F5000.0\nM106 S0 \nM104 S0 \nM140 S0\nM300 S1046 P150 \nM300 S1318 P150 \nM300 S1567 P150 \nM300 S2093 P150 \nM300 S2637 P150 "  //eDs END
+
+>>>>>>> Stashed changes
 //#define EVENT_GCODE_AFTER_G29 "G1 Z10 F12000\nG1 X15 Y330\nG1 Z0.5\nG1 Z10"
 
 /**
@@ -2278,7 +2296,7 @@
 #if ENABLED(LCD_BED_LEVELING)
   #define MESH_EDIT_Z_STEP  0.025 // (mm) Step size while manually probing Z axis.
   #define LCD_PROBE_Z_RANGE 4     // (mm) Z Range centered on Z_MIN_POS for LCD Z adjustment
-  //#define MESH_EDIT_MENU        // Add a menu to edit mesh points
+  #define MESH_EDIT_MENU        // Add a menu to edit mesh points
 #endif
 
 // Add a menu item to move between bed corners for manual bed adjustment
